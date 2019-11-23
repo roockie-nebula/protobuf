@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package dkfbasel.protobuf;
+
+option go_package = "github.com/dkfbasel/protobuf/types/duration";
+
+// Duration ...
+message Duration {
+	// Signed nanoseconds of the span of time. Must be from -315,576,000,000,000
+	// to +315,576,000,000,000 inclusive. Note: these bounds are computed from:
+	// 1000 ms/sec * 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	int64 nanos = 1;
+
+	// is set to true if the timestamp is null
+	bool is_not_null = 2;
+}
