@@ -3,7 +3,9 @@ package nullfloat
 import (
 	"database/sql"
 	"database/sql/driver"
+	"encoding/json"
 	"fmt"
+	"strconv"
 )
 
 // IsNull will return if the current null float is null
@@ -113,4 +115,34 @@ func (nf *NullFloat) UnmarshalGraphQL(input interface{}) error {
 		fmt.Println(input)
 		return fmt.Errorf("wrong type")
 	}
+}
+
+// MarshalJSON will return the content as json value, this is also called
+// by graphql to generate the response
+func (nf NullFloat) MarshalJSON() ([]byte, error) {
+
+	if nf.IsNull() {
+		return []byte("null"), nil
+	}
+
+	return json.Marshal(nf.GetFloat())
+}
+
+// UnmarshalJSON is used to convert the json representation into a null float
+func (nf *NullFloat) UnmarshalJSON(input []byte) error {
+	// convert to string
+	asString := string(input)
+
+	if asString == "null" {
+		nf.SetNull()
+		return nil
+	}
+
+	float, err := strconv.ParseFloat(asString, 64)
+	if err != nil {
+		return err
+	}
+
+	nf.Set(float)
+	return nil
 }
