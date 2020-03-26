@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   nullint.proto
 
-mv ./github.com/dkfbasel/protobuf/types/nullint/* .
+mv ./github.com/roockie-nebula/protobuf/types/nullint/* .
 rm -rf ./github.com

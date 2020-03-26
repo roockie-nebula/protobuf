@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package roockie.protobuf;
+
+option go_package = "github.com/roockie-nebula/protobuf/types/nullfloat";
+
+// NullFloat ...
+message NullFloat {
+	// Represents the actual Float
+	double float = 1;
+
+	// is set to true if the float is null
+	bool is_not_null = 2;
+}

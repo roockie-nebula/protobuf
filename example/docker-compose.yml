@@ -17,12 +17,11 @@ services:
 
   starfleet_example:
     image: dkfbasel/hot-reload-go:1.10.2
-    dns_search: .
     container_name: starfleet_example
     dns_search: .
     volumes:
-      - .:/go/src/github.com/dkfbasel/protobuf/example
-      - ../types:/go/src/github.com/dkfbasel/protobuf/types
+      - .:/go/src/github.com/roockie-nebula/protobuf/example
+      - ../types:/go/src/github.com/roockie-nebula/protobuf/types
     environment:
-      - PROJECT=github.com/dkfbasel/protobuf/example
+      - PROJECT=github.com/roockie-nebula/protobuf/example
       - CMD=build
