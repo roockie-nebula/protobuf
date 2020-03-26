@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   nulldate.proto
 
-mv ./github.com/dkfbasel/protobuf/types/nulldate/* .
+mv ./github.com/roockie-nebula/protobuf/types/nulldate/* .
 rm -rf ./github.com

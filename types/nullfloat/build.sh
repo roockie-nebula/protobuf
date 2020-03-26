@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   nullfloat.proto
 
-mv ./github.com/dkfbasel/protobuf/types/nullfloat/* .
+mv ./github.com/roockie-nebula/protobuf/types/nullfloat/* .
 rm -rf ./github.com

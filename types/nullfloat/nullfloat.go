@@ -54,11 +54,8 @@ func (nf *NullFloat) Scan(value interface{}) error {
 
 	// if the value is nil, reset the data of the null float
 	if value == nil {
-
-		nf.Float = 0
-		nf.IsNotNull = false
+		nf.SetNull()
 		return nil
-
 	}
 
 	// create a sql NullFloat64 to use the not exported convertAssign-method

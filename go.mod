@@ -1,4 +1,4 @@
-module github.com/dkfbasel/protobuf
+module github.com/roockie-nebula/protobuf
 
 go 1.13
 

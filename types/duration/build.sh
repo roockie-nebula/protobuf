@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   duration.proto
 
-mv ./github.com/dkfbasel/protobuf/types/duration/* .
+mv ./github.com/roockie-nebula/protobuf/types/duration/* .
 rm -rf ./github.com

@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package dkfbasel.protobuf;
+package roockie.protobuf;
 
-option go_package = "github.com/dkfbasel/protobuf/types/duration";
+option go_package = "github.com/roockie-nebula/protobuf/types/duration";
 
 // Duration ...
 message Duration {

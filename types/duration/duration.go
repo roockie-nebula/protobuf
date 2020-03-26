@@ -5,6 +5,8 @@ import (
 	"database/sql/driver"
 	"fmt"
 	"time"
+
+	"github.com/golang/protobuf/jsonpb"
 )
 
 // IsNull will return if the current duration is null
@@ -132,7 +134,7 @@ func (m Duration) MarshalJSON() ([]byte, error) {
 		return []byte("null"), nil
 	}
 
-	// TODO: format the timestamp in iso compatible duration format
+	// TODO: format the duration in iso compatible format
 
 	return []byte(m.Duration().String()), nil
 }
@@ -158,4 +160,12 @@ func (m *Duration) UnmarshalJSON(input []byte) error {
 
 	m.Set(duration)
 	return nil
+}
+
+func (m *Duration) MarshalJSONPB(_ *jsonpb.Marshaler) ([]byte, error) {
+	return m.MarshalJSON()
+}
+
+func (m *Duration) UnmarshalJSONPB(_ *jsonpb.Unmarshaler, input []byte) error {
+	return m.UnmarshalJSON(input)
 }

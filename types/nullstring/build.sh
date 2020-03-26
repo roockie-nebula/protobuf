@@ -5,5 +5,5 @@ protoc \
   --proto_path=.. \
   nullstring.proto
 
-mv ./github.com/dkfbasel/protobuf/types/nullstring/* .
+mv ./github.com/roockie-nebula/protobuf/types/nullstring/* .
 rm -rf ./github.com

@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/golang/protobuf/jsonpb"
 )
 
 // IsNull will return if the current timestamp is null
@@ -135,7 +137,6 @@ func (ts *Timestamp) UnmarshalGraphQL(input interface{}) error {
 // MarshalJSON will return the content as json value, this is also called
 // by graphql to generate the response
 func (ts Timestamp) MarshalJSON() ([]byte, error) {
-
 	if ts.IsNull() {
 		return []byte("null"), nil
 	}
@@ -167,6 +168,14 @@ func (ts *Timestamp) UnmarshalJSON(input []byte) error {
 
 	ts.Set(timepoint)
 	return nil
+}
+
+func (ts *Timestamp) MarshalJSONPB(_ *jsonpb.Marshaler) ([]byte, error) {
+	return ts.MarshalJSON()
+}
+
+func (ts *Timestamp) UnmarshalJSONPB(_ *jsonpb.Unmarshaler, input []byte) error {
+	return ts.UnmarshalJSON(input)
 }
 
 // parseFromString will attemt to parse a timestamp string as time
